@@ -24,11 +24,12 @@ function initBoids() {
 
 function drawBoid(ctx, boid){
 ctx.lineWidth = 10;
+ctx.fillRect(boid.x, boid.y, 15, 15);
 
 }
 
-//At this current moment, takes more and more resources and causes browser to crash due to running out of memory when using LiveServer to run.
-//function animationLoop(){
+
+function animationLoop(){
     for (let boid of boids){
         boid.x += boid.dx;
         boid.y += boid.dy;
@@ -42,16 +43,15 @@ const ctx = document.getElementById("boids").getContext("2d");
 ctx.clearRect(0,0,width,height);
 for (let boid of boids){
     drawBoid(ctx, boid);
-    window.requestAnimationFrame(animationLoop);
+    
 
 }
+window.requestAnimationFrame(animationLoop);
 
 }
 
 
 window.onload = () => {
-
-    
 
     initBoids();
 
